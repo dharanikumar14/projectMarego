@@ -1,0 +1,41 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Tickets list</h1>
+
+    <table border='1' cellpadding='10'>
+        <thead>
+            <tr>
+                <th>Ticket id</th>
+                <th>Ticket name</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('tickets_show', { 'id': entity.tid }) }}">{{ entity.tid }}</a></td>
+                <td>{{ entity.tname }}</td>
+                <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('tickets_show', { 'id': entity.tid }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('tickets_edit', { 'id': entity.tid }) }}">edit</a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+        <ul>
+        <li>
+            <a href="{{ path('tickets_new') }}">
+                Create a new entry
+            </a>
+        </li>
+    </ul>
+    {% endblock %}

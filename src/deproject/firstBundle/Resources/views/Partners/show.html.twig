@@ -1,0 +1,75 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Partners</h1>
+
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Pid</th>
+                <td>{{ entity.pid }}</td>
+            <tr>
+                <th>Pname</th>
+                <td>{{ entity.pName }}</td>
+            </tr>
+            <tr>
+                <th>Strasse</th>
+                <td>{{ entity.strasse }}</td>
+            </tr>
+            <tr>
+                <th>City</th>
+                <td>{{ entity.city }}</td>
+            </tr>
+            <tr>
+                <th>Zipcode</th>
+                <td>{{ entity.zipcode }}</td>
+            </tr>
+            <tr>
+                <th>Fname</th>
+                <td>{{ entity.fName }}</td>
+            </tr>
+            <tr>
+                <th>Lname</th>
+                <td>{{ entity.lName }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ entity.title }}</td>
+            </tr>
+            <tr>
+                <th>Iban</th>
+                <td>{{ entity.iban }}</td>
+            </tr>
+            <tr>
+                <th>Phone</th>
+                <td>{{ entity.phone }}</td>
+            </tr>
+            <tr>
+                <th>Mail</th>
+                <td>{{ entity.mail }}</td>
+            </tr>
+            <tr>
+                <th>Username</th>
+                <td>{{ entity.username }}</td>
+            </tr>
+            <tr>
+                <th>Securitypassword</th>
+                <td>{{ entity.securitypassword }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('partners') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('partners_edit', { 'id': entity.pid }) }}">
+            Edit
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+{% endblock %}

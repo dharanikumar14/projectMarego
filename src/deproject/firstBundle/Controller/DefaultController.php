@@ -1,0 +1,26 @@
+<?php
+
+namespace deproject\firstBundle\Controller;
+
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Symfony\Component\HttpFoundation\Response;		//you need to use this to use response class
+
+
+class DefaultController extends Controller
+{
+    /**
+     * @Route()
+     * @Template("deprojectfirstBundle:Default:signin.html.twig")
+     */
+    public function indexAction($name)
+    {
+       // return array('name' => "This is Response");
+       
+    	//$response = new Response("this is direct text from <strong>RESPONSE class</strong> ");
+    	$response = new Response("I am <strong> $name </strong>");
+    	return $response;
+       
+    }
+}
