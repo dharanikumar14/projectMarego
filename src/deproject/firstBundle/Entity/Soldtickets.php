@@ -7,20 +7,11 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Soldtickets
  *
- * @ORM\Table(name="soldtickets")
+ * @ORM\Table(name="soldtickets", indexes={@ORM\Index(name="TID_idx", columns={"T_id"}), @ORM\Index(name="CID_idx", columns={"C_id"}), @ORM\Index(name="gid_idx", columns={"G_id"}), @ORM\Index(name="IDX_B7744985550C4ED", columns={"pid"})})
  * @ORM\Entity
  */
 class Soldtickets
 {
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="pid", type="integer", nullable=false)
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="NONE")
-     */
-    private $pid;
-
     /**
      * @var string
      *
@@ -78,67 +69,56 @@ class Soldtickets
      */
     private $total;
 
-public function gettId()
-{
-	return $this->tId;
-}
-public function settId($tId)
-{
-	$this->tId = $tId;
+    /**
+     * @var integer
+     *
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="NONE")
+     * @ORM\OneToOne(targetEntity="Partners")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="pid", referencedColumnName="pid")
+     * })
+     */
+    private $pid;
+    
+    public function getPId()
+    {
+    	return $this->pid;
+    }
+    
+    public function getTId()
+    {
+    	return $this->tId;
+    }
+    
+    public function getCId()
+    {
+    	return $this->cId;
+    }
+    
+    public function getGId()
+    {
+    	return $this->gId;
+    }
+    
+    public function getQuantity()
+    {
+    	return $this->quantity;
+    }
+    
+    public function getpricePerTicket()
+    {
+    	return $this->pricePerTicket;
+    }
 
-	return $this;
-}
+    public function getTotal()
+    {
+    	return $this->total;
+    }
+    
+    public function getdate_created()
+    {
+    	return $this->date;
+    }
 
-public function getgId()
-{
-	return $this->gId;
-}
-public function setgId($gId)
-{
-	$this->gId = $gId;
-
-	return $this;
-}
-public function getcId()
-{
-	return $this->cId;
-}
-public function setcId($cId)
-{
-	$this->cId = $cId;
-
-	return $this;
-}
-public function getPid()
-{
-	return $this->pid;
-}
-public function setpId($pId)
-{
-	$this->pId = $pId;
-
-	return $this;
-}
-public function getquantity()
-{
-	return $this->quantity;
-}
-public function setquantity($quantity)
-{
-	$this->quantity = $quantity;
-
-	return $this;
-}
-public function getpricePerTicket()
-{
-	return $this->pricePerTicket;
-}
-public function gettotal()
-{
-	return $this->total;
-}
-public function getdate()
-{
-	return $this->date;
-}
 }

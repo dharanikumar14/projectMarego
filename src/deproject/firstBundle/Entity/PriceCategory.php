@@ -27,7 +27,7 @@ class PriceCategory
      * @ORM\Column(name="C_name", type="string", length=45, nullable=false)
      */
     private $cName;
-    
+
     public function getCid()
     {
     	return $this->cId;
@@ -42,15 +42,12 @@ class PriceCategory
     {
     	$this->cId = $cId;
     
-    	return $this;
+    	
     }
     
     public function setCname($cName)
     {
     	$this->cName = $cName;
-    
-    	return $this;
     }
-
-
+    
 }

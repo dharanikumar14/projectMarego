@@ -3,26 +3,26 @@
 {% block body -%}
     <h1>Tickets list</h1>
 
-    <table border='1' cellpadding='10'>
+    <table class="records_list">
         <thead>
             <tr>
-                <th>Ticket id</th>
-                <th>Ticket name</th>
+                <th>Tid</th>
+                <th>Tname</th>
                 <th>Actions</th>
             </tr>
         </thead>
         <tbody>
         {% for entity in entities %}
             <tr>
-                <td><a href="{{ path('tickets_show', { 'id': entity.tid }) }}">{{ entity.tid }}</a></td>
+                <td><a href="{{ path('tickets_show', { 'id': entity.tId }) }}">{{ entity.tId }}</a></td>
                 <td>{{ entity.tname }}</td>
                 <td>
                 <ul>
                     <li>
-                        <a href="{{ path('tickets_show', { 'id': entity.tid }) }}">show</a>
+                        <a href="{{ path('tickets_show', { 'id': entity.tId }) }}">show</a>
                     </li>
                     <li>
-                        <a href="{{ path('tickets_edit', { 'id': entity.tid }) }}">edit</a>
+                        <a href="{{ path('tickets_edit', { 'id': entity.tId }) }}">edit</a>
                     </li>
                 </ul>
                 </td>

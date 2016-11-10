@@ -105,7 +105,7 @@ class Partners
      */
     private $securitypassword;
 
- public function getPid()
+public function getPid()
     {
         return $this->pid;
     }
@@ -252,4 +252,5 @@ class Partners
     
     	return $this;
     }
+
 }

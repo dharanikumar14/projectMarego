@@ -12,14 +12,18 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Tickets
 {
+	
+	
     /**
      * @var integer
      *
-     * @ORM\Column(name="tid", type="integer", nullable=false)
+     * @ORM\Column(name="T_id", type="integer", nullable=false)
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
+	 * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $tid;
+    private $tId;
+    
+    
 
     /**
      * @var string
@@ -28,14 +32,14 @@ class Tickets
      */
     private $tname;
     
-    public function getTid()
+ public function getTid()
     {
-    	return $this->tid;
+    	return $this->tId;
     }
 
-    public function setTid($tid)
+    public function setTid($tId)
     {
-    	$this->tid = $tid;
+    	$this->tId = $tId;
     
     	return $this;
     }

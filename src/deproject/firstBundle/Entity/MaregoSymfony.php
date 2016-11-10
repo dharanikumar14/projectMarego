@@ -5,28 +5,28 @@ namespace deproject\firstBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * GrantType
+ * MaregoSymfony
  *
- * @ORM\Table(name="grant type")
+ * @ORM\Table(name="marego_symfony")
  * @ORM\Entity
  */
-class GrantType
+class MaregoSymfony
 {
     /**
      * @var integer
      *
-     * @ORM\Column(name="G_id", type="integer", nullable=false)
+     * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $gId;
+    private $id;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="Grant_name", type="string", length=45, nullable=false)
+     * @ORM\Column(name="partner", type="string", length=255, nullable=false)
      */
-    private $grantName;
+    private $partner;
 
 
 }

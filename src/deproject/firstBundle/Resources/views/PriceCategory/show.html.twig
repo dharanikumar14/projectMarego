@@ -6,6 +6,10 @@
     <table class="record_properties">
         <tbody>
             <tr>
+                <th>Id</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+            <tr>
                 <th>Cid</th>
                 <td>{{ entity.cId }}</td>
             </tr>
@@ -23,7 +27,7 @@
         </a>
     </li>
     <li>
-        <a href="{{ path('pricecategory_edit', { 'id': entity.cId }) }}">
+        <a href="{{ path('pricecategory_edit', { 'id': entity.id }) }}">
             Edit
         </a>
     </li>

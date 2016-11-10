@@ -53,7 +53,7 @@ class PriceCategoryController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('pricecategory_show', array('id' => $entity->getCid())));
+            return $this->redirect($this->generateUrl('pricecategory_show', array('id' => $entity->getId())));
         }
 
         return array(
@@ -161,7 +161,7 @@ class PriceCategoryController extends Controller
     private function createEditForm(PriceCategory $entity)
     {
         $form = $this->createForm(new PriceCategoryType(), $entity, array(
-            'action' => $this->generateUrl('pricecategory_update', array('id' => $entity->getCid())),
+            'action' => $this->generateUrl('pricecategory_update', array('id' => $entity->getId())),
             'method' => 'PUT',
         ));
 
@@ -193,7 +193,7 @@ class PriceCategoryController extends Controller
         if ($editForm->isValid()) {
             $em->flush();
 
-            return $this->redirect($this->generateUrl('pricecategory'));
+            return $this->redirect($this->generateUrl('pricecategory_edit', array('id' => $id)));
         }
 
         return array(

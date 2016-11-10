@@ -7,21 +7,21 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-use deproject\firstBundle\Entity\Tickets;
-use deproject\firstBundle\Form\TicketsType;
+use deproject\firstBundle\Entity\Soldtickets;
+use deproject\firstBundle\Form\SoldticketsType;
 
 /**
  * Tickets controller.
  *
- * @Route("/tickets")
+ * @Route("/soldtickets")
  */
-class TicketsController extends Controller
+class SoldticketsController extends Controller
 {
 
     /**
      * Lists all Tickets entities.
      *
-     * @Route("/", name="tickets")
+     * @Route("/", name="soldtickets")
      * @Method("GET")
      * @Template()
      */
@@ -29,7 +29,7 @@ class TicketsController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('deprojectfirstBundle:Tickets')->findAll();
+        $entities = $em->getRepository('deprojectfirstBundle:Soldtickets')->findAll();
 
         return array(
             'entities' => $entities,
@@ -38,13 +38,13 @@ class TicketsController extends Controller
     /**
      * Creates a new Tickets entity.
      *
-     * @Route("/", name="tickets_create")
+     * @Route("/", name="soldtickets_create")
      * @Method("POST")
-     * @Template("deprojectfirstBundle:Tickets:new.html.twig")
+     * @Template("deprojectfirstBundle:Soldtickets:new.html.twig")
      */
     public function createAction(Request $request)
     {
-        $entity = new Tickets();
+        $entity = new Soldtickets();
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
 
@@ -53,7 +53,7 @@ class TicketsController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('tickets_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('soldtickets_show', array('id' => $entity->getId())));
         }
 
         return array(
@@ -69,10 +69,10 @@ class TicketsController extends Controller
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createCreateForm(Tickets $entity)
+    private function createCreateForm(Soldtickets $entity)
     {
-        $form = $this->createForm(new TicketsType(), $entity, array(
-            'action' => $this->generateUrl('tickets_create'),
+        $form = $this->createForm(new SoldticketsType(), $entity, array(
+            'action' => $this->generateUrl('soldtickets_create'),
             'method' => 'POST',
         ));
 
@@ -84,13 +84,13 @@ class TicketsController extends Controller
     /**
      * Displays a form to create a new Tickets entity.
      *
-     * @Route("/new", name="tickets_new")
+     * @Route("/new", name="soldtickets_new")
      * @Method("GET")
      * @Template()
      */
     public function newAction()
     {
-        $entity = new Tickets();
+        $entity = new Soldtickets();
         $form   = $this->createCreateForm($entity);
 
         return array(
@@ -102,7 +102,7 @@ class TicketsController extends Controller
     /**
      * Finds and displays a Tickets entity.
      *
-     * @Route("/{id}", name="tickets_show")
+     * @Route("/{id}", name="soldtickets_show")
      * @Method("GET")
      * @Template()
      */
@@ -110,7 +110,7 @@ class TicketsController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('deprojectfirstBundle:Tickets')->find($id);
+        $entity = $em->getRepository('deprojectfirstBundle:Soldtickets')->find($id);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Tickets entity.');
@@ -127,7 +127,7 @@ class TicketsController extends Controller
     /**
      * Displays a form to edit an existing Tickets entity.
      *
-     * @Route("/{id}/edit", name="tickets_edit")
+     * @Route("/{id}/edit", name="soldtickets_edit")
      * @Method("GET")
      * @Template()
      */
@@ -135,7 +135,7 @@ class TicketsController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('deprojectfirstBundle:Tickets')->find($id);
+        $entity = $em->getRepository('deprojectfirstBundle:Soldtickets')->find($id);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Tickets entity.');
@@ -158,10 +158,10 @@ class TicketsController extends Controller
     *
     * @return \Symfony\Component\Form\Form The form
     */
-    private function createEditForm(Tickets $entity)
+    private function createEditForm(Soldtickets $entity)
     {
-        $form = $this->createForm(new TicketsType(), $entity, array(
-            'action' => $this->generateUrl('tickets_update', array('id' => $entity->getTid())),
+        $form = $this->createForm(new SoldticketsType(), $entity, array(
+            'action' => $this->generateUrl('soldtickets_update', array('id' => $entity->getId())),
             'method' => 'PUT',
         ));
 
@@ -172,15 +172,15 @@ class TicketsController extends Controller
     /**
      * Edits an existing Tickets entity.
      *
-     * @Route("/{id}", name="tickets_update")
+     * @Route("/{id}", name="soldtickets_update")
      * @Method("PUT")
-     * @Template("deprojectfirstBundle:Tickets:edit.html.twig")
+     * @Template("deprojectfirstBundle:Soldtickets:edit.html.twig")
      */
     public function updateAction(Request $request, $id)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('deprojectfirstBundle:Tickets')->find($id);
+        $entity = $em->getRepository('deprojectfirstBundle:Soldtickets')->find($id);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Tickets entity.');
@@ -193,7 +193,7 @@ class TicketsController extends Controller
         if ($editForm->isValid()) {
             $em->flush();
 
-            return $this->redirect($this->generateUrl('tickets_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('soldtickets_edit', array('id' => $id)));
         }
 
         return array(
@@ -205,7 +205,7 @@ class TicketsController extends Controller
     /**
      * Deletes a Tickets entity.
      *
-     * @Route("/{id}", name="tickets_delete")
+     * @Route("/{id}", name="soldtickets_delete")
      * @Method("DELETE")
      */
     public function deleteAction(Request $request, $id)
@@ -215,7 +215,7 @@ class TicketsController extends Controller
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $entity = $em->getRepository('deprojectfirstBundle:Tickets')->find($id);
+            $entity = $em->getRepository('deprojectfirstBundle:Soldtickets')->find($id);
 
             if (!$entity) {
                 throw $this->createNotFoundException('Unable to find Tickets entity.');
@@ -225,7 +225,7 @@ class TicketsController extends Controller
             $em->flush();
         }
 
-        return $this->redirect($this->generateUrl('tickets'));
+        return $this->redirect($this->generateUrl('soldtickets'));
     }
 
     /**
@@ -238,7 +238,7 @@ class TicketsController extends Controller
     private function createDeleteForm($id)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('tickets_delete', array('id' => $id)))
+            ->setAction($this->generateUrl('soldtickets_delete', array('id' => $id)))
             ->setMethod('DELETE')
             ->add('submit', 'submit', array('label' => 'Delete'))
             ->getForm()

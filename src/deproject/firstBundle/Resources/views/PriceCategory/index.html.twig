@@ -3,9 +3,10 @@
 {% block body -%}
     <h1>PriceCategory list</h1>
 
-    <table border='1' cellpadding='10'>
+    <table class="records_list">
         <thead>
             <tr>
+                <th>Id</th>
                 <th>Cid</th>
                 <th>Cname</th>
                 <th>Actions</th>
@@ -15,6 +16,7 @@
         {% for entity in entities %}
             <tr>
                 <td><a href="{{ path('pricecategory_show', { 'id': entity.cId }) }}">{{ entity.cId }}</a></td>
+                <td>{{ entity.cId }}</td>
                 <td>{{ entity.cName }}</td>
                 <td>
                 <ul>
