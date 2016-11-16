@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * GrantType
  *
- * @ORM\Table(name="grant type")
+ * @ORM\Table(name="grant_type")
  * @ORM\Entity
  */
 class GrantType
@@ -17,7 +17,7 @@ class GrantType
      *
      * @ORM\Column(name="G_id", type="integer", nullable=false)
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="NONE")
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $gId;
 
@@ -36,6 +36,13 @@ class GrantType
     public function getgrantName()
     {
     	return $this->grantName;
+    }
+    
+    public function setgrantName($grantName)
+    {
+    	$this->grantName = $grantName;
+    
+    	return $this;
     }
 
 

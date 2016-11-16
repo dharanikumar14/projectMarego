@@ -3,7 +3,7 @@
 {% block body -%}
     <h1>GrantType list</h1>
 
-    <table class="records_list">
+    <table border='1' cellpadding='10'>
         <thead>
             <tr>
                 <th>Gid</th>
@@ -19,10 +19,7 @@
                 <td>
                 <ul>
                     <li>
-                        <a href="{{ path('granttype_show', { 'id': entity.gId }) }}">show</a>
-                    </li>
-                    <li>
-                        <a href="{{ path('granttype_edit', { 'id': entity.gId }) }}">edit</a>
+                        <a href="{{ path('granttype_edit', { 'id': entity.gId }) }}">Edit</a>
                     </li>
                 </ul>
                 </td>
