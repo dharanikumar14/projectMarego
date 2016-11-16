@@ -53,7 +53,7 @@ class TicketsController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('tickets_show', array('id' => $entity->getTid())));
+            return $this->redirect($this->generateUrl('tickets'));
         }
 
         return array(
