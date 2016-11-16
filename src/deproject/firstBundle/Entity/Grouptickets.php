@@ -29,7 +29,7 @@ class Grouptickets
      *   @ORM\JoinColumn(name="T_id", referencedColumnName="T_id")
      * })
      */
-    private $t;
+    private $grid;
 
 
 }
