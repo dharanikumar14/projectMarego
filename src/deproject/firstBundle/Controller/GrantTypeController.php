@@ -53,7 +53,7 @@ class GrantTypeController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('granttype_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('granttype_show', array('id' => $entity->getGid())));
         }
 
         return array(
@@ -161,7 +161,7 @@ class GrantTypeController extends Controller
     private function createEditForm(GrantType $entity)
     {
         $form = $this->createForm(new GrantTypeType(), $entity, array(
-            'action' => $this->generateUrl('granttype_update', array('id' => $entity->getId())),
+            'action' => $this->generateUrl('granttype_update', array('id' => $entity->getGid())),
             'method' => 'PUT',
         ));
 
