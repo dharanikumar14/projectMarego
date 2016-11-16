@@ -6,9 +6,9 @@
     <table border='1' cellpadding='10'>
         <thead>
             <tr>
-                <th>Tid</th>
-                <th>cid</th>
-                <th>gid</th>
+                <th>Ticket Id</th>
+                <th>Category</th>
+                <th>Grant type</th>
                 <th>Partner</th>
                 <th>quantity</th>
                 <th>priceperticket</th>
@@ -22,7 +22,7 @@
         {% for entity in entities %}
             <tr>
                 <td><a href="{{ path('soldtickets_show', { 'id': entity.tId }) }}">{{ entity.tId }}</a></td>
-                <td>{{ entity.cId }}</td>
+                <td>{{ entity.cId.cName }}</td>
                 <td>{{ entity.gId.grantName}}</td>
                 <td>{{ entity.pid.pName}}</td>
                 <td>{{ entity.quantity }}</td>
@@ -32,10 +32,7 @@
                 <td>
                 <ul>
                     <li>
-                        <a href="{{ path('soldtickets_show', { 'id': entity.tId }) }}">show</a>
-                    </li>
-                    <li>
-                        <a href="{{ path('soldtickets_edit', { 'id': entity.tId }) }}">edit</a>
+                        <a href="{{ path('soldtickets_edit', { 'id': entity.tId }) }}">Edit</a>
                     </li>
                 </ul>
                 </td>

@@ -53,7 +53,7 @@ class SoldticketsController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('soldtickets_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('soldtickets_show', array('id' => $entity->getTId())));
         }
 
         return array(
@@ -161,7 +161,7 @@ class SoldticketsController extends Controller
     private function createEditForm(Soldtickets $entity)
     {
         $form = $this->createForm(new SoldticketsType(), $entity, array(
-            'action' => $this->generateUrl('soldtickets_update', array('id' => $entity->getId())),
+            'action' => $this->generateUrl('soldtickets_update', array('id' => $entity->getTId())),
             'method' => 'PUT',
         ));
 

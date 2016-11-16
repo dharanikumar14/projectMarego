@@ -22,20 +22,24 @@ class Soldtickets
     private $date;
 
     /**
-     * @var integer
+     * @var \Tickets
      *
-     * @ORM\Column(name="T_id", type="integer", nullable=false)
      * @ORM\Id
+     * @ORM\Column(name="T_id", type="integer", nullable=false)
      * @ORM\GeneratedValue(strategy="NONE")
+     * @ORM\OneToOne(targetEntity="Tickets")
      */
     private $tId;
 
     /**
-     * @var integer
+     * @var \PriceCategory
      *
-     * @ORM\Column(name="C_id", type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="NONE")
+     * @ORM\OneToOne(targetEntity="PriceCategory")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="C_id", referencedColumnName="C_id")
+     * })
      */
     private $cId;
 
