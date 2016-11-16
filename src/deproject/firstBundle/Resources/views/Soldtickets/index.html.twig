@@ -9,6 +9,7 @@
                 <th>Tid</th>
                 <th>cid</th>
                 <th>gid</th>
+                <th>Partner</th>
                 <th>quantity</th>
                 <th>priceperticket</th>
                 <th>Total</th>
@@ -22,7 +23,8 @@
             <tr>
                 <td><a href="{{ path('soldtickets_show', { 'id': entity.tId }) }}">{{ entity.tId }}</a></td>
                 <td>{{ entity.cId }}</td>
-                <td>{{ entity.gId}}</td>
+                <td>{{ entity.gId.grantName}}</td>
+                <td>{{ entity.pid.pName}}</td>
                 <td>{{ entity.quantity }}</td>
                 <td>{{ entity.pricePerTicket }}</td>
                 <td>{{ entity.total }}</td>

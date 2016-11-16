@@ -1,29 +1,29 @@
 {% extends '::base.html.twig' %}
 
 {% block body -%}
-    <h1>PriceCategory</h1>
+    <h1>GrantType</h1>
 
     <table class="record_properties">
         <tbody>
             <tr>
-                <th>Cid</th>
-                <td>{{ entity.cId }}</td>
+                <th>Gid</th>
+                <td>{{ entity.gId }}</td>
             </tr>
             <tr>
-                <th>Cname</th>
-                <td>{{ entity.cName }}</td>
+                <th>Grantname</th>
+                <td>{{ entity.grantName }}</td>
             </tr>
         </tbody>
     </table>
 
         <ul class="record_actions">
     <li>
-        <a href="{{ path('pricecategory') }}">
+        <a href="{{ path('granttype') }}">
             Back to the list
         </a>
     </li>
     <li>
-        <a href="{{ path('pricecategory_edit', { 'id': entity.cId }) }}">
+        <a href="{{ path('granttype_edit', { 'id': entity.gId }) }}">
             Edit
         </a>
     </li>

@@ -3,7 +3,7 @@
 {% block body -%}
     <h1>Tickets list</h1>
 
-    <table class="records_list">
+    <table border='1' cellpadding='10'>
         <thead>
             <tr>
                 <th>Tid</th>
@@ -17,12 +17,9 @@
                 <td><a href="{{ path('tickets_show', { 'id': entity.tId }) }}">{{ entity.tId }}</a></td>
                 <td>{{ entity.tname }}</td>
                 <td>
-                <ul>
+                <ul>                  
                     <li>
-                        <a href="{{ path('tickets_show', { 'id': entity.tId }) }}">show</a>
-                    </li>
-                    <li>
-                        <a href="{{ path('tickets_edit', { 'id': entity.tId }) }}">edit</a>
+                        <a href="{{ path('tickets_edit', { 'id': entity.tId }) }}">Edit</a>
                     </li>
                 </ul>
                 </td>

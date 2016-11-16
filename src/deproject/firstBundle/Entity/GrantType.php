@@ -27,6 +27,16 @@ class GrantType
      * @ORM\Column(name="Grant_name", type="string", length=45, nullable=false)
      */
     private $grantName;
+    
+    public function getGid()
+    {
+    	return $this->gId;
+    }
+    
+    public function getgrantName()
+    {
+    	return $this->grantName;
+    }
 
 
 }

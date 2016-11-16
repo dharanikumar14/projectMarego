@@ -7,21 +7,21 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-use deproject\firstBundle\Entity\PriceCategory;
-use deproject\firstBundle\Form\PriceCategoryType;
+use deproject\firstBundle\Entity\GrantType;
+use deproject\firstBundle\Form\GrantTypeType;
 
 /**
- * PriceCategory controller.
+ * GrantType controller.
  *
- * @Route("/pricecategory")
+ * @Route("/granttype")
  */
-class PriceCategoryController extends Controller
+class GrantTypeController extends Controller
 {
 
     /**
-     * Lists all PriceCategory entities.
+     * Lists all GrantType entities.
      *
-     * @Route("/", name="pricecategory")
+     * @Route("/", name="granttype")
      * @Method("GET")
      * @Template()
      */
@@ -29,22 +29,22 @@ class PriceCategoryController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('deprojectfirstBundle:PriceCategory')->findAll();
+        $entities = $em->getRepository('deprojectfirstBundle:GrantType')->findAll();
 
         return array(
             'entities' => $entities,
         );
     }
     /**
-     * Creates a new PriceCategory entity.
+     * Creates a new GrantType entity.
      *
-     * @Route("/", name="pricecategory_create")
+     * @Route("/", name="granttype_create")
      * @Method("POST")
-     * @Template("deprojectfirstBundle:PriceCategory:new.html.twig")
+     * @Template("deprojectfirstBundle:GrantType:new.html.twig")
      */
     public function createAction(Request $request)
     {
-        $entity = new PriceCategory();
+        $entity = new GrantType();
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
 
@@ -53,7 +53,7 @@ class PriceCategoryController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('pricecategory'));
+            return $this->redirect($this->generateUrl('granttype_show', array('id' => $entity->getId())));
         }
 
         return array(
@@ -63,16 +63,16 @@ class PriceCategoryController extends Controller
     }
 
     /**
-     * Creates a form to create a PriceCategory entity.
+     * Creates a form to create a GrantType entity.
      *
-     * @param PriceCategory $entity The entity
+     * @param GrantType $entity The entity
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createCreateForm(PriceCategory $entity)
+    private function createCreateForm(GrantType $entity)
     {
-        $form = $this->createForm(new PriceCategoryType(), $entity, array(
-            'action' => $this->generateUrl('pricecategory_create'),
+        $form = $this->createForm(new GrantTypeType(), $entity, array(
+            'action' => $this->generateUrl('granttype_create'),
             'method' => 'POST',
         ));
 
@@ -82,15 +82,15 @@ class PriceCategoryController extends Controller
     }
 
     /**
-     * Displays a form to create a new PriceCategory entity.
+     * Displays a form to create a new GrantType entity.
      *
-     * @Route("/new", name="pricecategory_new")
+     * @Route("/new", name="granttype_new")
      * @Method("GET")
      * @Template()
      */
     public function newAction()
     {
-        $entity = new PriceCategory();
+        $entity = new GrantType();
         $form   = $this->createCreateForm($entity);
 
         return array(
@@ -100,9 +100,9 @@ class PriceCategoryController extends Controller
     }
 
     /**
-     * Finds and displays a PriceCategory entity.
+     * Finds and displays a GrantType entity.
      *
-     * @Route("/{id}", name="pricecategory_show")
+     * @Route("/{id}", name="granttype_show")
      * @Method("GET")
      * @Template()
      */
@@ -110,10 +110,10 @@ class PriceCategoryController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('deprojectfirstBundle:PriceCategory')->find($id);
+        $entity = $em->getRepository('deprojectfirstBundle:GrantType')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find PriceCategory entity.');
+            throw $this->createNotFoundException('Unable to find GrantType entity.');
         }
 
         $deleteForm = $this->createDeleteForm($id);
@@ -125,9 +125,9 @@ class PriceCategoryController extends Controller
     }
 
     /**
-     * Displays a form to edit an existing PriceCategory entity.
+     * Displays a form to edit an existing GrantType entity.
      *
-     * @Route("/{id}/edit", name="pricecategory_edit")
+     * @Route("/{id}/edit", name="granttype_edit")
      * @Method("GET")
      * @Template()
      */
@@ -135,10 +135,10 @@ class PriceCategoryController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('deprojectfirstBundle:PriceCategory')->find($id);
+        $entity = $em->getRepository('deprojectfirstBundle:GrantType')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find PriceCategory entity.');
+            throw $this->createNotFoundException('Unable to find GrantType entity.');
         }
 
         $editForm = $this->createEditForm($entity);
@@ -152,16 +152,16 @@ class PriceCategoryController extends Controller
     }
 
     /**
-    * Creates a form to edit a PriceCategory entity.
+    * Creates a form to edit a GrantType entity.
     *
-    * @param PriceCategory $entity The entity
+    * @param GrantType $entity The entity
     *
     * @return \Symfony\Component\Form\Form The form
     */
-    private function createEditForm(PriceCategory $entity)
+    private function createEditForm(GrantType $entity)
     {
-        $form = $this->createForm(new PriceCategoryType(), $entity, array(
-            'action' => $this->generateUrl('pricecategory_update', array('id' => $entity->getCid())),
+        $form = $this->createForm(new GrantTypeType(), $entity, array(
+            'action' => $this->generateUrl('granttype_update', array('id' => $entity->getId())),
             'method' => 'PUT',
         ));
 
@@ -170,20 +170,20 @@ class PriceCategoryController extends Controller
         return $form;
     }
     /**
-     * Edits an existing PriceCategory entity.
+     * Edits an existing GrantType entity.
      *
-     * @Route("/{id}", name="pricecategory_update")
+     * @Route("/{id}", name="granttype_update")
      * @Method("PUT")
-     * @Template("deprojectfirstBundle:PriceCategory:edit.html.twig")
+     * @Template("deprojectfirstBundle:GrantType:edit.html.twig")
      */
     public function updateAction(Request $request, $id)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('deprojectfirstBundle:PriceCategory')->find($id);
+        $entity = $em->getRepository('deprojectfirstBundle:GrantType')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find PriceCategory entity.');
+            throw $this->createNotFoundException('Unable to find GrantType entity.');
         }
 
         $deleteForm = $this->createDeleteForm($id);
@@ -193,7 +193,7 @@ class PriceCategoryController extends Controller
         if ($editForm->isValid()) {
             $em->flush();
 
-            return $this->redirect($this->generateUrl('pricecategory'));
+            return $this->redirect($this->generateUrl('granttype_edit', array('id' => $id)));
         }
 
         return array(
@@ -203,9 +203,9 @@ class PriceCategoryController extends Controller
         );
     }
     /**
-     * Deletes a PriceCategory entity.
+     * Deletes a GrantType entity.
      *
-     * @Route("/{id}", name="pricecategory_delete")
+     * @Route("/{id}", name="granttype_delete")
      * @Method("DELETE")
      */
     public function deleteAction(Request $request, $id)
@@ -215,21 +215,21 @@ class PriceCategoryController extends Controller
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $entity = $em->getRepository('deprojectfirstBundle:PriceCategory')->find($id);
+            $entity = $em->getRepository('deprojectfirstBundle:GrantType')->find($id);
 
             if (!$entity) {
-                throw $this->createNotFoundException('Unable to find PriceCategory entity.');
+                throw $this->createNotFoundException('Unable to find GrantType entity.');
             }
 
             $em->remove($entity);
             $em->flush();
         }
 
-        return $this->redirect($this->generateUrl('pricecategory'));
+        return $this->redirect($this->generateUrl('granttype'));
     }
 
     /**
-     * Creates a form to delete a PriceCategory entity by id.
+     * Creates a form to delete a GrantType entity by id.
      *
      * @param mixed $id The entity id
      *
@@ -238,7 +238,7 @@ class PriceCategoryController extends Controller
     private function createDeleteForm($id)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('pricecategory_delete', array('id' => $id)))
+            ->setAction($this->generateUrl('granttype_delete', array('id' => $id)))
             ->setMethod('DELETE')
             ->add('submit', 'submit', array('label' => 'Delete'))
             ->getForm()

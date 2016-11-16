@@ -54,11 +54,13 @@ class Soldtickets
     private $pricePerTicket;
 
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="G_id", type="integer", nullable=false)
+     * @var \GrantType
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="NONE")
+     * @ORM\OneToOne(targetEntity="GrantType")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="G_id", referencedColumnName="G_id")
+     * })
      */
     private $gId;
 
@@ -70,7 +72,7 @@ class Soldtickets
     private $total;
 
     /**
-     * @var integer
+     * @var \Partners
      *
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="NONE")

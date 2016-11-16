@@ -1,12 +1,11 @@
 {% extends '::base.html.twig' %}
 
 {% block body -%}
-    <h1>PriceCategory list</h1>
+    <h1>Price Category list</h1>
 
-    <table class="records_list">
+    <table border='1' cellpadding='10'>
         <thead>
             <tr>
-                <th>Id</th>
                 <th>Cid</th>
                 <th>Cname</th>
                 <th>Actions</th>
@@ -16,15 +15,11 @@
         {% for entity in entities %}
             <tr>
                 <td><a href="{{ path('pricecategory_show', { 'id': entity.cId }) }}">{{ entity.cId }}</a></td>
-                <td>{{ entity.cId }}</td>
                 <td>{{ entity.cName }}</td>
                 <td>
                 <ul>
                     <li>
-                        <a href="{{ path('pricecategory_show', { 'id': entity.cId }) }}">show</a>
-                    </li>
-                    <li>
-                        <a href="{{ path('pricecategory_edit', { 'id': entity.cId }) }}">edit</a>
+                        <a href="{{ path('pricecategory_edit', { 'id': entity.cId }) }}">Edit</a>
                     </li>
                 </ul>
                 </td>
