@@ -11,16 +11,18 @@ use Symfony\Component\HttpFoundation\Response;		//you need to use this to use re
 class DefaultController extends Controller
 {
     /**
-     * @Route()
+     * @Route("/signin" ,name = "loginpage")
      * @Template("deprojectfirstBundle:Default:signin.html.twig")
      */
-    public function indexAction($name)
+    public function indexAction()
     {
        // return array('name' => "This is Response");
        
     	//$response = new Response("this is direct text from <strong>RESPONSE class</strong> ");
-    	$response = new Response("I am <strong> $name </strong>");
-    	return $response;
+    	//$response = new Response("I am <strong> $name </strong>");
+    	//return $response;
+    	
+    	return $this->render('deprojectfirstBundle:Default:signin.html.twig');
        
     }
 }
