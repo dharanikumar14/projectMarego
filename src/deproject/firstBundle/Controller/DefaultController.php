@@ -23,6 +23,17 @@ class DefaultController extends Controller
     	//return $response;
     	
     	return $this->render('deprojectfirstBundle:Default:signin.html.twig');
+    	
+    }
+    
+    /**
+     * @Route("/mainpage" ,name = "mainpage")
+     * @Template("deprojectfirstBundle:Default:frontpartnerpage.html.twig")
+     */
+    	public function frontpartnerpageAction()
+    	{
+    		return $this->render('deprojectfirstBundle:Default:frontpartnerpage.html.twig');
+    	}
        
     }
-}
+
