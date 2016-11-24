@@ -1,6 +1,12 @@
 {% extends '::base.html.twig' %}
 
 {% block body -%}
+<div id="container">
+			<div id="header">
+			
+			<div>{% image '@deprojectfirstBundle/Resources/public/images/marego.jpg'  output="images/marego.jpg" %}
+    <img src="{{ asset_url }}" alt="marego" align="right" width="200" height="100" /></div>
+			  {% endimage %}</div></div><br><br><br>
     <h1>GrantType list</h1>
 
     <table border='1' cellpadding='10'>
@@ -35,4 +41,8 @@
             </a>
         </li>
     </ul>
+    <div id="footer">
+			<div>{% image '@deprojectfirstBundle/Resources/public/images/Capture.jpg'  output="images/Capture.jpg" %}
+    <img src="{{ asset_url }}" alt="Capture" align="bottom" width="1350" height="130" />
+   {% endimage %}</div>
     {% endblock %}
