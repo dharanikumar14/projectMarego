@@ -5,15 +5,22 @@
 			<div>{% image '@deprojectfirstBundle/Resources/public/images/deutsche-bahn.jpg'  output="images/deutsche-bahn.jpg" %}
     <img src="{{ asset_url }}" alt="DBbahn" align="left" width="100" />
    {% endimage %}</div>
-			<div><img src="https://www.nasa.de/fileadmin/content/02_verkehr_planung/05_tarife/img/Logo_marego_print.jpg" align="right" width="200" height="100" /></div>
+			<div>{% image '@deprojectfirstBundle/Resources/public/images/marego.jpg'  output="images/marego.jpg" %}
+    <img src="{{ asset_url }}" alt="marego" align="right" width="200" height="100" /></div>
+			  {% endimage %}</div>
 			<h3 style="padding: 100px 0px 0px 400px;">Personal Portal For Revenue Sharing Process </h3>  <br> 	 </div>
 			<div id="content">
 			<h3>Menu:</h3> <br>
 			<div id="data">
+<<<<<<< HEAD
 			<a href={{ path('partners') }}></a> <button>View and Edit Personal Data</button>
 			<br><br>
+=======
+			<button>View and Edit Personal Data</button> <br><br>
+			
+>>>>>>> 8a54e0b49705aa1b17e646d45f2697282b25e358
 		
-			<button>View and Edit Soldtickets</button><br><br><br><br><br><br><br><br><br><br>
+		<button>View and Edit Soldtickets</button><br><br><br><br><br><br><br><br><br><br><br><br><br>
 			</div>
 			<div id="footer">
 			<div>{% image '@deprojectfirstBundle/Resources/public/images/Capture.jpg'  output="images/Capture.jpg" %}
