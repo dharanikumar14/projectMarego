@@ -145,22 +145,23 @@ class SoldticketsController extends Controller
     /**
      * Displays a form to edit an existing Tickets entity.
      *
-     * @Route("/{id}/edit", name="soldtickets_edit")
+     * @Route("/{id}/{ticket}/edit", name="soldtickets_edit")
      * @Method("GET")
      * @Template()
      */
-    public function editAction($id)
+    public function editAction($id,$ticket)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('deprojectfirstBundle:Soldtickets')->find($id);
+        $entity = $em->getRepository('deprojectfirstBundle:Soldtickets')->find($id,$ticket);
+        //$entity = $em->getRepository('deprojectfirstBundle:Soldtickets')->find($ticket,$date);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Tickets entity.');
         }
 
         $editForm = $this->createEditForm($entity);
-        $deleteForm = $this->createDeleteForm($id);
+        $deleteForm = $this->createDeleteForm($id,$ticket);
 
         return array(
             'entity'      => $entity,
