@@ -22,6 +22,14 @@
             </tr>
         </thead>
         <tbody>
+        <div id="container">
+			<div id="header">
+			<div>{% image '@deprojectfirstBundle/Resources/public/images/deutsche-bahn.jpg'  output="images/deutsche-bahn.jpg" %}
+    <img src="{{ asset_url }}" alt="DBbahn" align="left" width="100" />
+   {% endimage %}</div>
+			<div>{% image '@deprojectfirstBundle/Resources/public/images/marego.jpg'  output="images/marego.jpg" %}
+    <img src="{{ asset_url }}" alt="marego" align="right" width="200" height="100" /></div>
+			  {% endimage %}</div></div>
         {% for entity in entities %}
             <tr>
                 <td><a href="{{ path('partners_show', { 'id': entity.pid }) }}">{{ entity.pid }}</a></td>
@@ -47,7 +55,13 @@
                 </td>
             </tr>
         {% endfor %}
-        </tbody>
+        
+        <div id="footer">
+			<div>{% image '@deprojectfirstBundle/Resources/public/images/Capture.jpg'  output="images/Capture.jpg" %}
+    <img src="{{ asset_url }}" alt="Capture" align="bottom" width="1350" height="130" />
+   {% endimage %}</div>
+			</div>
+			</tbody>
     </table>
 
         <ul>
