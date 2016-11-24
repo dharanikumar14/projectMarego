@@ -19,7 +19,7 @@ class Price
      * @ORM\GeneratedValue(strategy="NONE")
      * @ORM\ManyToOne(targetEntity="Tickets",cascade={"persist"})
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="T_id", referencedColumnName="T_id")
+     *   @ORM\JoinColumn(name="Ticketid", referencedColumnName="T_id")
      * })
      */
     private $ticketid;
@@ -30,7 +30,7 @@ class Price
      * @ORM\GeneratedValue(strategy="NONE")
      * @ORM\ManyToOne(targetEntity="PriceCategory",cascade={"persist"})
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="C_id", referencedColumnName="C_id")
+     *   @ORM\JoinColumn(name="Catid", referencedColumnName="C_id")
      * })
      */
     private $categoryid;

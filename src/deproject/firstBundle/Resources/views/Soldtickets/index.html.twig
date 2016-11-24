@@ -36,7 +36,8 @@
                 <td>
                 <ul>
                     <li>
-                        <a href="{{ path('soldtickets_edit', {  'id': entity.date,'ticket': entity.Ticket.tId }) }}">Edit</a>
+                        <a href="{{ path('soldtickets_edit', {  'id': entity.date,'ticket': entity.Ticket.tName ,'category': entity.category.
+                        cId,'granttype': entity.grantType.gId}) }}">Edit</a>
                     </li>
                 </ul>
                 </td>

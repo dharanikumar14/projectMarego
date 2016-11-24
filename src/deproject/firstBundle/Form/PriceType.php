@@ -1,12 +1,12 @@
 <?php
 
 
-namespace deproject\firstBundle\Entity;
+namespace deproject\firstBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
-use Symfony\Component\Form\Extension\Core\Type\DateType;
+
 
 class PriceType extends AbstractType
 {
@@ -19,7 +19,7 @@ class PriceType extends AbstractType
           $builder
             ->add('ticketid')
             ->add('categoryid')
-            ->add('pricesperticket')
+            ->add('priceperticket')
             
         ;
     }
@@ -30,7 +30,6 @@ class PriceType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'deproject\firstBundle\Entity\Tickets',
         	'data_class' => 'deproject\firstBundle\Entity\Price'
             
         ));

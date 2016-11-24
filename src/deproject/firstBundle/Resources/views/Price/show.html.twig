@@ -14,7 +14,7 @@
             </tr>         
             <tr>
                 <th>Price</th>
-                <td>{{ entity.pricesperticket }}</td>
+                <td>{{ entity.priceperticket }}</td>
             </tr>
            
         </tbody>
@@ -27,7 +27,7 @@
         </a>
     </li>
     <li>
-        <a href="{{ path('soldtickets_edit', { 'id': entity.tId }) }}">
+        <a href="{{ path('soldtickets_edit', { 'id': entity.Ticketid.tId }) }}">
             Edit
         </a>
     </li>

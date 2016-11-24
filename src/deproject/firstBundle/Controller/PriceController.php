@@ -1,7 +1,7 @@
 <?php
 
 
-namespace deproject\firstBundle\Entity;
+namespace deproject\firstBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -12,7 +12,7 @@ use deproject\firstBundle\Entity\Price;
 use deproject\firstBundle\Form\PriceType;
 
 /**
- * Tickets controller.
+ * Price controller.
  *
  * @Route("/price")
  */
@@ -136,7 +136,7 @@ class PriceController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('deprojectfirstBundle:Price')->find($id);
+        $entity = $em->getRepository('deprojectfirstBundle:Price')->findoneby(array($id));
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Tickets entity.');

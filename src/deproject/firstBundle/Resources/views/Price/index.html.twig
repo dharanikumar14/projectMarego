@@ -9,6 +9,7 @@
                 <th>Ticket Id</th>
                 <th>Category</th>
                 <th>priceperticket</th>
+                <th>Actions</th>
                 
                 
             </tr>
@@ -16,13 +17,13 @@
         <tbody>
         {% for entity in entities %}
             <tr>
-                <td><a href="{{ path('price_show', { 'id': entity.ticketid }) }}">{{ entity.ticketid }}</a></td>
-                <td>{{ entity.categoryid }}</td>
-                <td>{{ entity.pricesperticket }}</td>
+                <td>{{ entity.Ticketid.tName }}</td>
+                <td>{{ entity.Categoryid.cName }}</td>
+                <td>{{ entity.Priceperticket }}</td>
                 <td>
                 <ul>
                     <li>
-                        <a href="{{ path('price_edit', { 'id': entity.ticketid }) }}">Edit</a>
+                        <a href="{{ path('price_edit', { 'id': entity.Ticketid.tName }) }}">Edit</a>
                     </li>
                 </ul>
                 </td>

@@ -34,7 +34,8 @@ class SoldticketsType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'deproject\firstBundle\Entity\Soldtickets',
+            'data_class' => 'deproject\firstBundle\Entity\Soldtickets'
+        	
         	
         	
         ));
