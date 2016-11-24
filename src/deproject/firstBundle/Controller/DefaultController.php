@@ -6,7 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Response;		//you need to use this to use response class
-
+use Symfony\Bundle\AsseticBundle\AsseticBundle;
 
 class DefaultController extends Controller
 {

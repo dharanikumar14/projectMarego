@@ -1,34 +1,47 @@
 {% extends '::base.html.twig' %}
 
 {% block body -%}
+<<<<<<< HEAD
 <div id="container">
 			<div id="header">
 			<div>{% image '@deprojectfirstBundle/Resources/public/images/deutsche-bahn.jpg'  output="images/deutsche-bahn.jpg" %}
     <img src="{{ asset_url }}" alt="DBbahn" align="left" width="100" />
    {% endimage %}</div><br><br><br>
+=======
+ <div id="container">
+			<div id="header">
+			
+			<div>{% image '@deprojectfirstBundle/Resources/public/images/marego.jpg'  output="images/marego.jpg" %}
+    <img src="{{ asset_url }}" alt="marego" align="right" width="200" height="100" /></div>
+			  {% endimage %}</div></div><br><br><br>
+>>>>>>> 5a1af57131cbfa0cc220faaa295e0de5743c11ff
     <h1>Partners</h1>
 
     <table border='1' cellpadding='10'>
         <thead>
             <tr>
                 <th>Pid</th>
-                <th>Pname</th>
+                <th>Partner's Name</th>
                 <th>Strasse</th>
                 <th>City</th>
                 <th>Zipcode</th>
-                <th>Fname</th>
-                <th>Lname</th>
+                <th>Firstname</th>
+                <th>Lastname</th>
                 <th>Title</th>
                 <th>Iban</th>
                 <th>Phone</th>
-                <th>Mail</th>
+                <th>E-Mail</th>
             
                 <th>Actions</th>
             </tr>
         </thead>
         <tbody>
+<<<<<<< HEAD
         
 			 
+=======
+       
+>>>>>>> 5a1af57131cbfa0cc220faaa295e0de5743c11ff
         {% for entity in entities %}
             <tr>
                 <td><a href="{{ path('partners_show', { 'id': entity.pid }) }}">{{ entity.pid }}</a></td>
@@ -44,9 +57,7 @@
                 <td>{{ entity.mail }}</td>
                 <td>
                 <ul>
-                    <li>
-                        <a href="{{ path('partners_show', { 'id': entity.pid }) }}">show</a>
-                    </li>
+                   
                     <li>
                         <a href="{{ path('partners_edit', { 'id': entity.pid }) }}">edit</a>
                     </li>
@@ -55,7 +66,11 @@
             </tr>
         {% endfor %}
         
+<<<<<<< HEAD
        
+=======
+        
+>>>>>>> 5a1af57131cbfa0cc220faaa295e0de5743c11ff
 			</tbody>
     </table>
 
@@ -65,7 +80,12 @@
                 Create a new entry
             </a>
         </li>
+<<<<<<< HEAD
     </ul> <div id="footer">
+=======
+    </ul>
+    <div id="footer">
+>>>>>>> 5a1af57131cbfa0cc220faaa295e0de5743c11ff
 			<div>{% image '@deprojectfirstBundle/Resources/public/images/Capture.jpg'  output="images/Capture.jpg" %}
     <img src="{{ asset_url }}" alt="Capture" align="bottom" width="1350" height="130" />
    {% endimage %}</div>

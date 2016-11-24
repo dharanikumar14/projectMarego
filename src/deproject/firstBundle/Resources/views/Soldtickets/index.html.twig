@@ -6,12 +6,11 @@
     <table border='1' cellpadding='10'>
         <thead>
             <tr>
-                <th>Ticket Id</th>
+                <th>Ticket</th>
                 <th>Category</th>
                 <th>Grant type</th>
                 <th>Partner</th>
                 <th>quantity</th>
-                <th>priceperticket</th>
                 <th>Total</th>
                 <th>date</th>
                 <th>Actions</th>
@@ -21,18 +20,17 @@
         <tbody>
         {% for entity in entities %}
             <tr>
-                <td><a href="{{ path('soldtickets_show', { 'id': entity.tId }) }}">{{ entity.tId }}</a></td>
-                <td>{{ entity.cId.cName }}</td>
-                <td>{{ entity.gId.grantName}}</td>
-                <td>{{ entity.pid.pName}}</td>
+        		<td>{{ entity.Ticket.tName }}</td>
+                <td>{{ entity.category.cName }}</td>
+                <td>{{ entity.grantType.grantName}}</td>
+                <td>{{ entity.partner.pName}}</td>
                 <td>{{ entity.quantity }}</td>
-                <td>{{ entity.pricePerTicket }}</td>
                 <td>{{ entity.total }}</td>
-                <td>{{ entity.date_created }}</td>
+                <td>{{ entity.date }}</td>
                 <td>
                 <ul>
                     <li>
-                        <a href="{{ path('soldtickets_edit', { 'id': entity.tId }) }}">Edit</a>
+                        <a href="{{ path('soldtickets_edit', { 'id': entity.Ticket.tId }) }}">Edit</a>
                     </li>
                 </ul>
                 </td>
