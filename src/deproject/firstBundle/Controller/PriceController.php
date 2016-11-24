@@ -8,7 +8,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use deproject\firstBundle\Entity\Price;
-use deproject\firstBundle\Form\PriceType;
+use deproject\firstBundle\Form\Price;
 
 /**
  * Tickets controller.
