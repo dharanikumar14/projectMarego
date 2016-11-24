@@ -9,6 +9,11 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use deproject\firstBundle\Entity\Soldtickets;
 use deproject\firstBundle\Form\SoldticketsType;
+use deproject\firstBundle\Entity\Tickets;
+use deproject\firstBundle\Entity\PriceCategory;
+use deproject\firstBundle\Entity\GrantType;
+use deproject\firstBundle\Entity\Partners;
+
 
 /**
  * Tickets controller.
@@ -25,14 +30,19 @@ class SoldticketsController extends Controller
      * @Method("GET")
      * @Template()
      */
+	
+	
     public function indexAction()
     {
+    	
         $em = $this->getDoctrine()->getManager();
+        
+     
 
         $entities = $em->getRepository('deprojectfirstBundle:Soldtickets')->findAll();
 
         return array(
-            'entities' => $entities,
+            'entities' => $entities
         );
     }
     /**
@@ -44,7 +54,9 @@ class SoldticketsController extends Controller
      */
     public function createAction(Request $request)
     {
-        $entity = new Soldtickets();
+    	
+        $entity =  new Soldtickets(Tickets::$ticket, PriceCategory::$category,GrantType::$granttype, Partners::$partner ,Soldtickets::$date );
+ 		
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
 
@@ -52,8 +64,9 @@ class SoldticketsController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($entity);
             $em->flush();
-
-            return $this->redirect($this->generateUrl('soldtickets_show', array('id' => $entity->getTId())));
+            
+         
+            return $this->redirect($this->generateUrl('soldtickets'));
         }
 
         return array(
@@ -90,7 +103,12 @@ class SoldticketsController extends Controller
      */
     public function newAction()
     {
-        $entity = new Soldtickets();
+        $tickets = new Tickets();
+        $category = new PriceCategory();
+        $grant = new GrantType();
+        $partner = new Partners();
+        $date =new \DateTime('now'); 
+    	$entity = new Soldtickets($tickets, $category, $grant, $partner, $date); 
         $form   = $this->createCreateForm($entity);
 
         return array(
@@ -161,7 +179,7 @@ class SoldticketsController extends Controller
     private function createEditForm(Soldtickets $entity)
     {
         $form = $this->createForm(new SoldticketsType(), $entity, array(
-            'action' => $this->generateUrl('soldtickets_update', array('id' => $entity->getTId())),
+            'action' => $this->generateUrl('soldtickets_update', array('id' => $entity->getTicket())),
             'method' => 'PUT',
         ));
 
@@ -193,7 +211,7 @@ class SoldticketsController extends Controller
         if ($editForm->isValid()) {
             $em->flush();
 
-            return $this->redirect($this->generateUrl('soldtickets_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('soldtickets'));
         }
 
         return array(

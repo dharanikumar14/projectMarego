@@ -1,3 +1,5 @@
+
+
 <div id="container">
 			<div id="header">
 			<div>{% image '@deprojectfirstBundle/Resources/public/images/deutsche-bahn.jpg'  output="images/deutsche-bahn.jpg" %}
@@ -8,13 +10,13 @@
 			<div id="content">
 			<h3>Menu:</h3> <br>
 			<div id="data">
-			<button>View and Edit Personal Data</button> 
-			<div> <img src= "http://cdn.makeuseof.com/wp-content/uploads/2012/02/apple_contacts_icon.png?004f0d" alt="emoji" width="50"></div><br><br>
+			<a href={{ path('partners') }}></a> <button>View and Edit Personal Data</button>
+			<br><br>
 		
 			<button>View and Edit Soldtickets</button><br><br><br><br><br><br><br><br><br><br>
 			</div>
 			<div id="footer">
 			<div>{% image '@deprojectfirstBundle/Resources/public/images/Capture.jpg'  output="images/Capture.jpg" %}
-    <img src="{{ asset_url }}" alt="Capture" align="bottom" width="1275" height="130" />
+    <img src="{{ asset_url }}" alt="Capture" align="bottom" width="1350" height="130" />
    {% endimage %}</div>
 			</div>

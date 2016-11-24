@@ -7,16 +7,16 @@
         <thead>
             <tr>
                 <th>Pid</th>
-                <th>Pname</th>
+                <th>Partner's Name</th>
                 <th>Strasse</th>
                 <th>City</th>
                 <th>Zipcode</th>
-                <th>Fname</th>
-                <th>Lname</th>
+                <th>Firstname</th>
+                <th>Lastname</th>
                 <th>Title</th>
                 <th>Iban</th>
                 <th>Phone</th>
-                <th>Mail</th>
+                <th>E-Mail</th>
             
                 <th>Actions</th>
             </tr>
@@ -37,9 +37,7 @@
                 <td>{{ entity.mail }}</td>
                 <td>
                 <ul>
-                    <li>
-                        <a href="{{ path('partners_show', { 'id': entity.pid }) }}">show</a>
-                    </li>
+                   
                     <li>
                         <a href="{{ path('partners_edit', { 'id': entity.pid }) }}">edit</a>
                     </li>
