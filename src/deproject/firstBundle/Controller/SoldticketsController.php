@@ -55,7 +55,7 @@ class SoldticketsController extends Controller
     public function createAction(Request $request)
     {
     	
-        $entity =  new Soldtickets(Tickets::$ticket, PriceCategory::$category,GrantType::$granttype, Partners::$partner ,Soldtickets::$date );
+        $entity =  new Soldtickets();
  		
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
@@ -103,13 +103,19 @@ class SoldticketsController extends Controller
      */
     public function newAction()
     {
-        $tickets = new Tickets();
+    	/*$em = $this->getDoctrine()->getManager();
+        $tickets = new Tickets(); 
+        $em->persist($tickets);
         $category = new PriceCategory();
+        $em->persist($category);
         $grant = new GrantType();
+        $em->persist($grant);
         $partner = new Partners();
-        $date =new \DateTime('now'); 
-    	$entity = new Soldtickets($tickets, $category, $grant, $partner, $date); 
-        $form   = $this->createCreateForm($entity);
+        $em->persist($partner);
+        $date =new \DateTime('now');
+    	$entity = new Soldtickets($tickets, $category, $grant, $partner, $date);*/ 
+    	$entity = new Soldtickets();
+    	$form   = $this->createCreateForm($entity);
 
         return array(
             'entity' => $entity,
@@ -118,50 +124,25 @@ class SoldticketsController extends Controller
     }
 
     /**
-     * Finds and displays a Tickets entity.
-     *
-     * @Route("/{id}", name="soldtickets_show")
-     * @Method("GET")
-     * @Template()
-     */
-    public function showAction($id)
-    {
-        $em = $this->getDoctrine()->getManager();
-
-        $entity = $em->getRepository('deprojectfirstBundle:Soldtickets')->find($id);
-
-        if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Tickets entity.');
-        }
-
-        $deleteForm = $this->createDeleteForm($id);
-
-        return array(
-            'entity'      => $entity,
-            'delete_form' => $deleteForm->createView(),
-        );
-    }
-
-    /**
      * Displays a form to edit an existing Tickets entity.
      *
-     * @Route("/{id}/edit", name="soldtickets_edit")
+     * @Route("/edit/{id}/{ticket}/{category}/{granttype}/{partner}", name="soldtickets_edit")
      * @Method("GET")
      * @Template()
      */
-    public function editAction($id,$ticket)
+    public function editAction($id,$ticket,$category,$granttype,$partner)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('deprojectfirstBundle:Soldtickets')->findoneby(array('date'=>$id,'ticket'=>$ticket));
+        $entity = $em->getRepository('deprojectfirstBundle:Soldtickets')->findOneBy(Array('date'=>$id, 'ticket' =>$ticket,'category' => $category,'granttype' => $granttype,'partner'=>$partner));
 
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Tickets entity.');
+            throw $this->createNotFoundException('Unable to find entity.');
         }
 
         $editForm = $this->createEditForm($entity);
-        $deleteForm = $this->createDeleteForm($id,$ticket);
+        $deleteForm = $this->createDeleteForm($id);
 
         return array(
             'entity'      => $entity,
@@ -170,6 +151,31 @@ class SoldticketsController extends Controller
         );
     }
 
+    /**
+     * Finds and displays a Tickets entity.
+     *
+     * @Route("show/{id}/{ticket}/{category}/{granttype}/{partner}", name="soldtickets_show")
+     * @Method("GET")
+     * @Template()
+     */
+    public function showAction($id,$ticket,$category,$granttype,$partner)
+    {
+    	$em = $this->getDoctrine()->getManager();
+    
+    	$entity = $em->getRepository('deprojectfirstBundle:Soldtickets')->findOneBy(Array('date'=>$id, 'ticket' =>$ticket,'category' => $category,'granttype' => $granttype,'partner'=>$partner));
+    
+    	if (!$entity) {
+    		throw $this->createNotFoundException('Unable to find Tickets entity.');
+    	}
+    
+    	$deleteForm = $this->createDeleteForm($id,$ticket,$category,$granttype,$partner);
+    
+    	return array(
+    			'entity'      => $entity,
+    			'delete_form' => $deleteForm->createView(),
+    	);
+    }
+    
     /**
     * Creates a form to edit a Tickets entity.
     *
@@ -180,7 +186,7 @@ class SoldticketsController extends Controller
     private function createEditForm(Soldtickets $entity)
     {
         $form = $this->createForm(new SoldticketsType(), $entity, array(
-            'action' => $this->generateUrl('soldtickets_update', array('id' => $entity->getTicket())),
+            'action' => $this->generateUrl('soldtickets_update', array('id' => $entity->getdate(),'ticket' => $entity->getTicket()->getTid(),'category' => $entity->getcategory()->getCid(),'granttype' => $entity->getgrantType()->getGid(),'partner' => $entity->getpartner()->getPid())),
             'method' => 'PUT',
         ));
 
@@ -191,21 +197,21 @@ class SoldticketsController extends Controller
     /**
      * Edits an existing Tickets entity.
      *
-     * @Route("/{id}", name="soldtickets_update")
+     * @Route("/{id}/{ticket}/{category}/{granttype}/{partner}", name="soldtickets_update")
      * @Method("PUT")
      * @Template("deprojectfirstBundle:Soldtickets:edit.html.twig")
      */
-    public function updateAction(Request $request, $id)
+    public function updateAction(Request $request, $id,$ticket,$category,$granttype,$partner)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('deprojectfirstBundle:Soldtickets')->find($id);
+        $entity = $em->getRepository('deprojectfirstBundle:Soldtickets')->find(array('date' =>$id, 'ticket' => $ticket,'category' =>$category ,'granttype' =>$granttype ,'partner' =>$partner));
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Tickets entity.');
+            throw $this->createNotFoundException('Unable to find entity from update section');
         }
 
-        $deleteForm = $this->createDeleteForm($id);
+        $deleteForm = $this->createDeleteForm($id,$ticket,$category,$granttype,$partner);
         $editForm = $this->createEditForm($entity);
         $editForm->handleRequest($request);
 

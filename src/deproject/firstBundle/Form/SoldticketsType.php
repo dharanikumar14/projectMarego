@@ -7,6 +7,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 
+
 class SoldticketsType extends AbstractType
 {
     /**
@@ -19,11 +20,12 @@ class SoldticketsType extends AbstractType
             ->add('ticket')
             ->add('category')
             ->add('partner')
-            ->add('grantType')
+            ->add('granttype')
             ->add('quantity')
-            ->add('pricePerTicket')
-            ->add('total')
-            ->add('date', 'date',array('data_class' => null ));
+ //           ->add('total')
+            ->add('date', 'datetime', array(
+    'placeholder' => 'Select a value',
+));
             
         ;
     }
@@ -35,6 +37,8 @@ class SoldticketsType extends AbstractType
     {
         $resolver->setDefaults(array(
             'data_class' => 'deproject\firstBundle\Entity\Soldtickets'
+        	
+        	
         	
         	
         	

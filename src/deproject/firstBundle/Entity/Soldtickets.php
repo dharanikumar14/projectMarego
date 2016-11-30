@@ -29,7 +29,7 @@ class Soldtickets
      *
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="NONE")
-     * @ORM\ManyToOne(targetEntity="Tickets",cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="Tickets")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="T_id", referencedColumnName="T_id")
      * })
@@ -41,7 +41,7 @@ class Soldtickets
      *
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="NONE")
-     * @ORM\ManyToOne(targetEntity="PriceCategory",cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="PriceCategory")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="C_id", referencedColumnName="C_id")
      * })
@@ -56,53 +56,47 @@ class Soldtickets
     private $quantity;
 
     /**
-     * @var float
-     *
-     * @ORM\Column(name="price_per_ticket", type="float", precision=10, scale=0, nullable=true)
-     */
-    private $pricePerTicket;
-
-    /**
      * @var \GrantType
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="NONE")
-     * @ORM\ManyToOne(targetEntity="GrantType",cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="GrantType")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="G_id", referencedColumnName="G_id")
      * })
      */
     private $granttype;
 
-    /**
+   /* /**
      * @var float
-     *
+     * 
      * @ORM\Column(name="total", type="float", precision=10, scale=0, nullable=true)
+     *
      */
-    private $total;
+    /*private $total;*/
 
     /**
      * @var \Partners
      *
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="NONE")
-     * @ORM\ManyToOne(targetEntity="Partners",cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="Partners")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="pid", referencedColumnName="pid")
      * })
      */
     private $partner;
-    
-    public function __construct(Tickets $ticket, PriceCategory $category,GrantType $granttype, Partners $partner , $date )
+      
+    /*public function __construct(Tickets $ticket, PriceCategory $category,GrantType $granttype, Partners $partner , $date )
     {
     	$this->ticket = $ticket;
     	$this->category = $category;
     	$this->granttype = $granttype;
     	$this->partner = $partner;
-    	$this->date = $date;
+    	$this->date = new \DateTime();
     	
     	//$tId = new Soldtickets($tId, $cId, $gId, $pid, $date);
     	 
-    } 
+    } */
     
     
     
@@ -111,14 +105,10 @@ class Soldtickets
     	return $this->quantity;
     }
     
-    public function getpricePerTicket()
-    {
-    	return $this->pricePerTicket;
-    }
-    
     public function getTotal()
     {
-    	return $this->total;
+    	// FIXME if we have the pricing info via the price cat ticket via have to resolve it!
+    	return $this->quantity * 3;
     }
     
     public function getTicket()
@@ -155,11 +145,44 @@ class Soldtickets
     
    public function  setDate($date)
    {
-   		$this->date = new \DateTime('now');
+   		$this->date = $date;
    		return $this;
    }
    
-    	
+   public function setcategory($category)
+   {
+   	$this->category = $category;
+   
+   	return $this;
+   } 
+   
+   public function setgrantType($granttype)
+   {
+   	$this->granttype = $granttype;
+   
+   	return $this;
+   }
+   
+   public function setpartner($partner)
+   {
+   	$this->partner = $partner;
+   	 
+   	return $this;
+   }
+   
+   /*public function setTotal($total)
+   {
+   	$this->total = $total;
+   	 
+   	return $this;
+   }*/
+   
+   public function setQuantity($quantity)
+   {
+   	$this->quantity = $quantity;
+   	 
+   	return $this;
+   }
     	
     	
     	

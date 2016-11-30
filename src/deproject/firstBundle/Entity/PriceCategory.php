@@ -50,4 +50,9 @@ class PriceCategory
     	$this->cName = $cName;
     }
     
+    public function __toString()
+    {
+    	return $this->cName;
+    }
+    
 }

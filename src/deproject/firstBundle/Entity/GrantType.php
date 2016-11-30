@@ -15,9 +15,8 @@ class GrantType
     /**
      * @var integer
      *
-     * @ORM\Column(name="G_id", type="integer", nullable=false)
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
+     * @ORM\Column(name="G_id", type="integer", nullable=false)
      */
     private $gId;
 
@@ -45,5 +44,9 @@ class GrantType
     	return $this;
     }
 
+    public function __toString()
+    {
+    	return $this->grantName;
+    }
 
 }

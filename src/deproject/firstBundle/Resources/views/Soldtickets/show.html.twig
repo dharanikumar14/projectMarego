@@ -50,7 +50,7 @@
         </a>
     </li>
     <li>
-        <a href="{{ path('soldtickets_edit', { 'id': entity.tId }) }}">
+        <a href="{{ path('soldtickets_edit', { 'id': entity.date,'ticket': entity.Ticket.tName}) }}">
             Edit
         </a>
     </li>

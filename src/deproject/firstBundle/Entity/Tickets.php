@@ -16,10 +16,9 @@ class Tickets
 	
     /**
      * @var integer
-     *
-     * @ORM\Column(name="T_id", type="integer", nullable=false)
+     * 
      * @ORM\Id
-	 * @ORM\GeneratedValue(strategy="NONE")
+     * @ORM\Column(name="T_id", type="integer", nullable=false)
      */
     private $tId;
     
@@ -53,5 +52,10 @@ class Tickets
     	$this->tname = $tname;
     
     	return $this;
+    }
+    
+    public function __toString()
+    {
+    	return $this->tname;
     }
 }
