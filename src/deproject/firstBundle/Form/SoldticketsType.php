@@ -8,6 +8,8 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 
 
+
+
 class SoldticketsType extends AbstractType
 {
     /**
@@ -16,16 +18,16 @@ class SoldticketsType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+    	
+    	
           $builder
             ->add('ticket')
             ->add('category')
             ->add('partner')
             ->add('granttype')
             ->add('quantity')
- //           ->add('total')
-            ->add('date', 'datetime', array(
-    'placeholder' => 'Select a value',
-));
+            ->add('date'
+);
             
         ;
     }

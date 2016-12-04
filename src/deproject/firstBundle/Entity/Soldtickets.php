@@ -3,7 +3,12 @@
 namespace deproject\firstBundle\Entity;
 
 
+
+
 use Doctrine\ORM\Mapping as ORM;
+;
+
+
 
 
 
@@ -85,6 +90,7 @@ class Soldtickets
      * })
      */
     private $partner;
+    
       
     /*public function __construct(Tickets $ticket, PriceCategory $category,GrantType $granttype, Partners $partner , $date )
     {
@@ -98,6 +104,8 @@ class Soldtickets
     	 
     } */
     
+
+
     
     
     public function getQuantity()
@@ -108,7 +116,8 @@ class Soldtickets
     public function getTotal()
     {
     	// FIXME if we have the pricing info via the price cat ticket via have to resolve it!
-    	return $this->quantity * 3;
+    	
+    	return $this->quantity;
     }
     
     public function getTicket()
@@ -184,8 +193,7 @@ class Soldtickets
    	return $this;
    }
     	
-    	
-    	
+
     	
 }
 

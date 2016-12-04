@@ -54,7 +54,7 @@ class PriceController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('price_show', array('id' => $entity->getTicketid())));
+            return $this->redirect($this->generateUrl('price'));
         }
 
         return array(
@@ -128,22 +128,22 @@ class PriceController extends Controller
     /**
      * Displays a form to edit an existing Tickets entity.
      *
-     * @Route("/{id}/edit", name="price_edit")
+     * @Route("/edit/{id}/{category}", name="price_edit")
      * @Method("GET")
      * @Template()
      */
-    public function editAction($id)
+    public function editAction($id,$category)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('deprojectfirstBundle:Price')->findoneby(array($id));
+        $entity = $em->getRepository('deprojectfirstBundle:Price')->findOneBy(array('ticketid'=>$id,'categoryid'=>$category));
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Tickets entity.');
         }
 
         $editForm = $this->createEditForm($entity);
-        $deleteForm = $this->createDeleteForm($id);
+        $deleteForm = $this->createDeleteForm($id,$category);
 
         return array(
             'entity'      => $entity,
@@ -162,7 +162,7 @@ class PriceController extends Controller
     private function createEditForm(Price $entity)
     {
         $form = $this->createForm(new PriceType(), $entity, array(
-            'action' => $this->generateUrl('price_update', array('id' => $entity->getTicketid())),
+            'action' => $this->generateUrl('price_update', array('id' => $entity->getTicketid()->getTid(),'category' => $entity->getCategoryid()->getCid())),
             'method' => 'PUT',
         ));
 
@@ -173,28 +173,28 @@ class PriceController extends Controller
     /**
      * Edits an existing Tickets entity.
      *
-     * @Route("/{id}", name="price_update")
+     * @Route("/{id}/{category}", name="price_update")
      * @Method("PUT")
      * @Template("deprojectbundleBundle:Price:edit.html.twig")
      */
-    public function updateAction(Request $request, $id)
+    public function updateAction(Request $request, $id,$category)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('deprojectfirstBundle:Price')->find($id);
+        $entity = $em->getRepository('deprojectfirstBundle:Price')->find(array('ticketid'=>$id,'categoryid'=>$category));
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Tickets entity.');
         }
 
-        $deleteForm = $this->createDeleteForm($id);
+        $deleteForm = $this->createDeleteForm($id,$category);
         $editForm = $this->createEditForm($entity);
         $editForm->handleRequest($request);
 
         if ($editForm->isValid()) {
             $em->flush();
 
-            return $this->redirect($this->generateUrl('price_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('price'));
         }
 
         return array(
@@ -206,17 +206,17 @@ class PriceController extends Controller
     /**
      * Deletes a Tickets entity.
      *
-     * @Route("/{id}", name="price_delete")
+     * @Route("/{id}/{category}", name="price_delete")
      * @Method("DELETE")
      */
-    public function deleteAction(Request $request, $id)
+    public function deleteAction(Request $request, $id,$category)
     {
-        $form = $this->createDeleteForm($id);
+        $form = $this->createDeleteForm($id,$category);
         $form->handleRequest($request);
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $entity = $em->getRepository('deprojectfirstBundle:Price')->find($id);
+            $entity = $em->getRepository('deprojectfirstBundle:Price')->find(array('ticketid'=>$id,'categoryid'=>$category));
 
             if (!$entity) {
                 throw $this->createNotFoundException('Unable to find Tickets entity.');
@@ -236,10 +236,10 @@ class PriceController extends Controller
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createDeleteForm($id)
+    private function createDeleteForm($id,$category)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('price_delete', array('id' => $id)))
+            ->setAction($this->generateUrl('price_delete', array('id' => $id,'category'=> $category)))
             ->setMethod('DELETE')
             ->add('submit', 'submit', array('label' => 'Delete'))
             ->getForm()
