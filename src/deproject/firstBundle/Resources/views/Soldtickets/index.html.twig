@@ -12,13 +12,13 @@
     <table border='1' cellpadding='10'>
         <thead>
             <tr>
-                <th>Ticket</th>
+                <th><strong>Ticket</strong></th>
                 <th>Category</th>
-                <th>Grant type</th>
+                <th>Grant Type</th>
                 <th>Partner</th>
-                <th>quantity</th>
+                <th>Quantity</th>
                 <th>Total</th>
-                <th>date</th>
+                <th>Date Added</th>
                 <th>Actions</th>
                 
             </tr>
@@ -32,7 +32,7 @@
                 <td>{{ entity.partner.pName}}</td>
                 <td>{{ entity.quantity }}</td>
                 <td>{{ entity.getTotal() }}</td>
-                <td>{{ entity.date }}</td>
+                <td>{{ entity.date|date('Y-m-d') }}</td>
                 <td>
                 <ul>
                     <li>

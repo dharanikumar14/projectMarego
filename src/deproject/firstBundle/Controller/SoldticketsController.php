@@ -13,7 +13,7 @@ use deproject\firstBundle\Entity\Tickets;
 use deproject\firstBundle\Entity\PriceCategory;
 use deproject\firstBundle\Entity\GrantType;
 use deproject\firstBundle\Entity\Partners;
-
+use deproject\firstBundle\Entity\Price;
 
 /**
  * Tickets controller.
@@ -103,17 +103,7 @@ class SoldticketsController extends Controller
      */
     public function newAction()
     {
-    	/*$em = $this->getDoctrine()->getManager();
-        $tickets = new Tickets(); 
-        $em->persist($tickets);
-        $category = new PriceCategory();
-        $em->persist($category);
-        $grant = new GrantType();
-        $em->persist($grant);
-        $partner = new Partners();
-        $em->persist($partner);
-        $date =new \DateTime('now');
-    	$entity = new Soldtickets($tickets, $category, $grant, $partner, $date);*/ 
+   
     	$entity = new Soldtickets();
     	$form   = $this->createCreateForm($entity);
 
@@ -142,7 +132,7 @@ class SoldticketsController extends Controller
         }
 
         $editForm = $this->createEditForm($entity);
-        $deleteForm = $this->createDeleteForm($id);
+        $deleteForm = $this->createDeleteForm($id,$ticket,$category,$granttype,$partner);
 
         return array(
             'entity'      => $entity,
@@ -230,17 +220,17 @@ class SoldticketsController extends Controller
     /**
      * Deletes a Tickets entity.
      *
-     * @Route("/{id}", name="soldtickets_delete")
+     * @Route("/{id}/{ticket}/{category}/{granttype}/{partner}", name="soldtickets_delete")
      * @Method("DELETE")
      */
-    public function deleteAction(Request $request, $id)
+    public function deleteAction(Request $request, $id,$ticket,$category,$granttype,$partner)
     {
-        $form = $this->createDeleteForm($id);
+        $form = $this->createDeleteForm($id,$ticket,$category,$granttype,$partner);
         $form->handleRequest($request);
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $entity = $em->getRepository('deprojectfirstBundle:Soldtickets')->find($id);
+            $entity = $em->getRepository('deprojectfirstBundle:Soldtickets')->find(array('date' =>$id, 'ticket' => $ticket,'category' =>$category ,'granttype' =>$granttype ,'partner' =>$partner));
 
             if (!$entity) {
                 throw $this->createNotFoundException('Unable to find Tickets entity.');
@@ -260,10 +250,10 @@ class SoldticketsController extends Controller
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createDeleteForm($id)
+    private function createDeleteForm($id,$ticket,$category,$granttype,$partner)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('soldtickets_delete', array('id' => $id)))
+            ->setAction($this->generateUrl('soldtickets_delete', array('id' => $id,'ticket' => $ticket,'category' =>$category ,'granttype' =>$granttype ,'partner' =>$partner)))
             ->setMethod('DELETE')
             ->add('submit', 'submit', array('label' => 'Delete'))
             ->getForm()
