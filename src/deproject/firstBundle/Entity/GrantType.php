@@ -22,7 +22,7 @@ class GrantType
 
     /**
      * @var string
-     *
+     * @ORM\GeneratedValue(strategy="AUTO")
      * @ORM\Column(name="Grant_name", type="string", length=45, nullable=false)
      */
     private $grantName;

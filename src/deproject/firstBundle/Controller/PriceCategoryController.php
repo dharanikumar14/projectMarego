@@ -122,7 +122,7 @@ class PriceCategoryController extends Controller
             'entity'      => $entity,
             'delete_form' => $deleteForm->createView(),
         );
-    }
+    } 
 
     /**
      * Displays a form to edit an existing PriceCategory entity.

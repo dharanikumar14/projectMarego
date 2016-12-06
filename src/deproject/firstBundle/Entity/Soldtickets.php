@@ -6,7 +6,9 @@ namespace deproject\firstBundle\Entity;
 
 
 use Doctrine\ORM\Mapping as ORM;
-;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\HttpFoundation\Tests\StringableObject;
 
 
 
@@ -18,14 +20,15 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="soldtickets", indexes={@ORM\Index(name="TID_idx", columns={"T_id"}), @ORM\Index(name="CID_idx", columns={"C_id"}), @ORM\Index(name="gid_idx", columns={"G_id"}), @ORM\Index(name="IDX_B7744985550C4ED", columns={"pid"})})
  * @ORM\Entity
  */
-class Soldtickets
+class Soldtickets extends Controller
 {
     /**
-     * @var string
+     * @var \DateTime
      *
      * @ORM\Column(name="date", type="string", length=30, nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="NONE")
+     * 
      */
     private $date;
 
@@ -90,7 +93,6 @@ class Soldtickets
      * })
      */
     private $partner;
-    
       
     /*public function __construct(Tickets $ticket, PriceCategory $category,GrantType $granttype, Partners $partner , $date )
     {
@@ -104,9 +106,7 @@ class Soldtickets
     	 
     } */
     
-
-
-    
+   
     
     public function getQuantity()
     {
@@ -117,7 +117,11 @@ class Soldtickets
     {
     	// FIXME if we have the pricing info via the price cat ticket via have to resolve it!
     	
-    	return $this->quantity;
+    	//$em = $this->getDoctrine()->getManager();
+    	
+    	//$price_entity = $em->getRepository('deprojectfirstBundle:Price')->findOneBy(Array('Ticketid'=>$this->ticket->tId, 'Catid'=>$this->category->cId));
+    	
+    	return $this->quantity;// * $price_entity->priceperticket;
     }
     
     public function getTicket()
@@ -151,7 +155,8 @@ class Soldtickets
    	
    		return $this;
    }
-    
+   
+ 
    public function  setDate($date)
    {
    		$this->date = $date;
@@ -194,6 +199,11 @@ class Soldtickets
    }
     	
 
+  /* public function __toString()
+   {
+   	return (string) $this->date;
+   } */
+ 
     	
 }
 

@@ -5,6 +5,8 @@ namespace deproject\firstBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+//use Symfony\Component\Form\Extension\Core\DataTransformer\DateTimeToStringTransformer;
+
 
 
 
@@ -18,7 +20,7 @@ class SoldticketsType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-    	
+    	//$transformer = new DateTimeToStringTransformer();
     	
           $builder
             ->add('ticket')
