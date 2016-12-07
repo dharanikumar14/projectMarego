@@ -17,9 +17,9 @@ class PriceType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
           $builder
-            ->add('ticketid')
-            ->add('categoryid')
-            ->add('priceperticket')
+            ->add('ticketid',null,array('label' => 'Ticket'))
+            ->add('categoryid',null,array('label' => 'Category'))
+            ->add('priceperticket',null,array('label' => 'Price/ticket'))
             
         ;
     }

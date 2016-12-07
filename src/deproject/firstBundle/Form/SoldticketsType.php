@@ -26,7 +26,7 @@ class SoldticketsType extends AbstractType
             ->add('ticket')
             ->add('category')
             ->add('partner')
-            ->add('granttype')
+            ->add('granttype',null,array('label' => 'Grant'))
             ->add('quantity')
             ->add('date'
 );
