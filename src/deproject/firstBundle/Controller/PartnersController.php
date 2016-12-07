@@ -53,7 +53,7 @@ class PartnersController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('partners_show', array('id' => $entity->getPid())));
+            return $this->redirect($this->generateUrl('partners'));
         }
 
         return array(
