@@ -92,9 +92,11 @@ tr:nth-child(odd){background-color: #f2f2f2}
                 <td>{{ entity.cName }}</td>
                 <td>
                 <ul>
-                    <li>
-                        <a href="{{ path('pricecategory_edit', { 'id': entity.cId }) }}">Edit</a>
-                    </li>
+                   
+                        <a href="{{ path('pricecategory_edit', { 'id': entity.cId }) }}">{% image '@deprojectfirstBundle/Resources/public/images/edit.png'  output="images/edit.png" %}
+    <img src="{{ asset_url }}" alt="marego" align="left" width="25" height="25" />
+    {% endimage %}</a>
+                   
                 </ul>
                 </td>
             </tr>
@@ -103,14 +105,14 @@ tr:nth-child(odd){background-color: #f2f2f2}
     </table>
 
         <ul>
-        <li>
             <a href="{{ path('pricecategory_new') }}">
-                Create a new entry
+                {% image '@deprojectfirstBundle/Resources/public/images/add.png'  output="images/add.png" %}
+    <img src="{{ asset_url }}" alt="marego" align="left" width="50" height="50" />
+    {% endimage %}
             </a>
-        </li>
     </ul>
     <div id="footer">
 			<div>{% image '@deprojectfirstBundle/Resources/public/images/Capture.jpg'  output="images/Capture.jpg" %}
-    <img src="{{ asset_url }}" alt="Capture" align="bottom" width="1350" height="130" />
+    <img src="{{ asset_url }}" alt="Capture" align="bottom" style="position:relative; width:100%" height="100%" />
    {% endimage %}</div>
     {% endblock %}

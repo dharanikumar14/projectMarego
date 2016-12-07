@@ -52,10 +52,10 @@ assetic:
 doctrine:
     dbal:
         driver:   pdo_mysql
-        host:     localhost
+        host:     192.168.20.102
         port:     3306
         dbname:   marego_db
-        user:     root
+        user:     deproject
         password: 1234
         charset:  UTF8
         # if using pdo_sqlite as your database driver:
