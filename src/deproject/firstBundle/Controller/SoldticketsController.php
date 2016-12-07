@@ -41,6 +41,13 @@ class SoldticketsController extends Controller
 
         $entities = $em->getRepository('deprojectfirstBundle:Soldtickets')->findAll();
 
+        foreach ($entities as $entity) {
+        	
+        	$price = $em->getRepository('deprojectfirstBundle:Price')->findOneBy(array('ticketid' =>$entity->getTicket(),'categoryid' =>$entity->getcategory()));
+        	
+        	echo $entity->setPrice($price->getPriceperticket());
+        }
+        
         return array(
             'entities' => $entities
         );

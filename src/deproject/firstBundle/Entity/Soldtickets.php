@@ -93,19 +93,11 @@ class Soldtickets extends Controller
      * })
      */
     private $partner;
-      
-    /*public function __construct(Tickets $ticket, PriceCategory $category,GrantType $granttype, Partners $partner , $date )
-    {
-    	$this->ticket = $ticket;
-    	$this->category = $category;
-    	$this->granttype = $granttype;
-    	$this->partner = $partner;
-    	$this->date = new \DateTime();
-    	
-    	//$tId = new Soldtickets($tId, $cId, $gId, $pid, $date);
-    	 
-    } */
     
+   
+    private $priceperticket;
+      
+ 
    
     
     public function getQuantity()
@@ -113,15 +105,16 @@ class Soldtickets extends Controller
     	return $this->quantity;
     }
     
+    public function setPrice($priceperticket)
+    
+    {
+    	$this->priceperticket=$priceperticket;
+    }
+    
     public function getTotal()
     {
-    	// FIXME if we have the pricing info via the price cat ticket via have to resolve it!
     	
-    	//$em = $this->getDoctrine()->getManager();
-    	
-    	//$price_entity = $em->getRepository('deprojectfirstBundle:Price')->findOneBy(Array('Ticketid'=>$this->ticket->tId, 'Catid'=>$this->category->cId));
-    	
-    	return $this->quantity;// * $price_entity->priceperticket;
+    	return $this->quantity * $this->priceperticket;
     }
     
     public function getTicket()
