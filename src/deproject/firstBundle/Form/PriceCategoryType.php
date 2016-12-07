@@ -15,8 +15,8 @@ class PriceCategoryType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-        	->add('Cid')
-            ->add('cName')
+        	->add('Cid',null,array('label' => 'Category ID'))
+            ->add('cName',null,array('label' => 'Category Name'))
         ;
     }
     

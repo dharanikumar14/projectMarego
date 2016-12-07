@@ -15,8 +15,8 @@ class TicketsType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder 
-        	->add('tid')
-        	->add('tname')
+        	->add('tid',null,array('label' => 'Ticket ID','attr' =>array('style' => 'width:300px')))
+        	->add('tname',null,array('label' => 'Ticket Name','attr' =>array('style' => 'width:300px')))
             
         ;
     }
