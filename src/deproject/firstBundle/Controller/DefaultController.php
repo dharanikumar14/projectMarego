@@ -34,6 +34,16 @@ class DefaultController extends Controller
     	{
     		return $this->render('deprojectfirstBundle:Default:frontpartnerpage.html.twig');
     	}
-       
+
+    	/**
+    	 * @Route("/dbbahn" ,name = "dbbahnpage")
+    	 * @Template("deprojectfirstBundle:Default:dbbahn.html.twig")
+    	 */
+    	public function dbbahnAction()
+    	{
+    		return $this->render('deprojectfirstBundle:Default:dbbahn.html.twig');
+    	}
+    	 
+    	 
     }
 
