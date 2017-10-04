@@ -23,7 +23,7 @@ use Symfony\Component\HttpFoundation\Tests\StringableObject;
 class Soldtickets extends Controller
 {
     /**
-     * @var \DateTime
+     * @var 
      *
      * @ORM\Column(name="date", type="string", length=30, nullable=false)
      * @ORM\Id

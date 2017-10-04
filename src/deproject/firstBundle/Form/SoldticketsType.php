@@ -5,6 +5,7 @@ namespace deproject\firstBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+//use Symfony\Component\Form\Extension\Core\Type\DateType;
 //use Symfony\Component\Form\Extension\Core\DataTransformer\DateTimeToStringTransformer;
 
 
@@ -28,8 +29,10 @@ class SoldticketsType extends AbstractType
             ->add('partner')
             ->add('granttype',null,array('label' => 'Grant'))
             ->add('quantity')
-            ->add('date'
-);
+            ->add('date','date', array(
+    // render as a single text box
+    'widget' => 'single_text','format' => 'yyyy-MM-dd','input' => 'string'
+));
             
         ;
     }

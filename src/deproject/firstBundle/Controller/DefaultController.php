@@ -7,6 +7,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Response;		//you need to use this to use response class
 use Symfony\Bundle\AsseticBundle\AsseticBundle;
+use deproject\firstBundle\Entity\Partners;
 
 class DefaultController extends Controller
 {
@@ -37,11 +38,17 @@ class DefaultController extends Controller
 
     	/**
     	 * @Route("/dbbahn" ,name = "dbbahnpage")
-    	 * @Template("deprojectfirstBundle:Default:dbbahn.html.twig")
+    	 * 
     	 */
     	public function dbbahnAction()
     	{
-    		return $this->render('deprojectfirstBundle:Default:dbbahn.html.twig');
+    		 $em = $this->getDoctrine()->getManager();
+
+        $entities = $em->getRepository('deprojectfirstBundle:Partners')->findAll();
+
+        return $this->render('deprojectfirstBundle:Default:dbbahn.html.twig',array(
+            'entities' => $entities,
+        ));
     	}
     	 
     	 
