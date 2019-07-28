@@ -2,7 +2,9 @@
 
 namespace deproject\firstBundle\Entity;
 
+// Doctrine for database storage and orm mapping
 use Doctrine\ORM\Mapping as ORM;
+// Annotations to configure the routing
 
 /**
  * GrantType
