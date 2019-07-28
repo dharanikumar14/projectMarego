@@ -36,7 +36,7 @@ class PartnersController extends Controller
         );
     }
     /**
-     * Creates a new Partners entity.
+     * Creates a new Partner entity.
      *
      * @Route("/", name="partners_create")
      * @Method("POST")

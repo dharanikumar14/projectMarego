@@ -10,6 +10,8 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use deproject\firstBundle\Entity\marego_symfony;
 use deproject\firstBundle\Form\marego_symfonyType;
 
+// Annotations to configure the routes
+
 /**
  * marego_symfony controller.
  *
@@ -42,6 +44,7 @@ class marego_symfonyController extends Controller
      * @Method("POST")
      * @Template("deprojectfirstBundle:marego_symfony:new.html.twig")
      */
+	 
     public function createAction(Request $request)
     {
         $entity = new marego_symfony();
